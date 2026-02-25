@@ -3,29 +3,32 @@ import { Search, CalendarCheck, Truck } from "lucide-react";
 const steps = [
   {
     icon: Search,
-    title: "Browse & Select",
-    description: "Explore our fleet of modern tractors and find the perfect match for your farming needs.",
+    title: "1. ट्रैक्टर और सेवा चुनें",
+    subtitle: "Choose Tractor & Service",
+    description: "अपनी ज़रूरत के हिसाब से ट्रैक्टर चुनें — जुताई, बुवाई, कटाई, छिड़काव या सफाई।",
   },
   {
     icon: CalendarCheck,
-    title: "Pick Your Dates",
-    description: "Choose your rental period with our easy calendar. Flexible daily or weekly rates available.",
+    title: "2. तारीख और एकड़ बताएं",
+    subtitle: "Pick Date & Acres",
+    description: "कैलेंडर से तारीख चुनें और कितने एकड़ काम है बताएं। किराया तुरंत दिखेगा।",
   },
   {
     icon: Truck,
-    title: "Get It Delivered",
-    description: "We deliver the tractor to your farm and pick it up when you're done. Simple as that.",
+    title: "3. बुकिंग पक्की!",
+    subtitle: "Booking Confirmed!",
+    description: "नाम, मोबाइल नंबर और गाँव का नाम भरें। ट्रैक्टर आपके खेत पर आएगा।",
   },
 ];
 
 const HowItWorks = () => {
   return (
-    <section className="py-24 bg-primary text-primary-foreground">
+    <section id="how" className="py-24 bg-primary text-primary-foreground">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">How It Works</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">कैसे बुक करें? · How It Works</h2>
           <p className="text-primary-foreground/70 text-lg max-w-xl mx-auto">
-            Three simple steps to get the equipment you need on your farm.
+            सिर्फ 3 आसान स्टेप में ट्रैक्टर बुक करें। बहुत आसान है!
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -38,7 +41,8 @@ const HowItWorks = () => {
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondary text-secondary-foreground mb-6">
                 <step.icon className="h-7 w-7" />
               </div>
-              <h3 className="text-xl font-bold mb-3 font-display">{step.title}</h3>
+              <h3 className="text-xl font-bold mb-1 font-display">{step.title}</h3>
+              <p className="text-sm text-secondary mb-3">{step.subtitle}</p>
               <p className="text-primary-foreground/70 leading-relaxed">{step.description}</p>
             </div>
           ))}
