@@ -1,40 +1,91 @@
-import tractor1 from "@/assets/tractor-1.jpg";
-import tractor2 from "@/assets/tractor-2.jpg";
-import tractor3 from "@/assets/tractor-3.jpg";
+import tractorSwaraj from "@/assets/tractor-swaraj.jpg";
+import tractorMahindra from "@/assets/tractor-mahindra.jpg";
+import tractorJohnDeere from "@/assets/tractor-johndeere.jpg";
+import tractorFarmtrac from "@/assets/tractor-farmtrac.jpg";
+import tractorMassey from "@/assets/tractor-massey241.jpg";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TractorCard from "@/components/TractorCard";
+import type { TractorData } from "@/components/TractorCard";
+import ServicesSection from "@/components/ServicesSection";
 import HowItWorks from "@/components/HowItWorks";
 import Stats from "@/components/Stats";
 import Footer from "@/components/Footer";
 
-const tractors = [
+const tractors: TractorData[] = [
   {
-    name: "GreenForce 6250R",
-    image: tractor1,
-    hp: 250,
+    name: "Swaraj 744 FE",
+    image: tractorSwaraj,
+    hp: 48,
     fuel: "Diesel",
-    type: "Row Crop",
-    pricePerDay: 320,
+    type: "कृषि · Farming",
+    pricePerDay: 1500,
     available: true,
+    services: [
+      { name: "Ploughing", icon: () => null, pricePerAcre: 800 },
+      { name: "Seeding", icon: () => null, pricePerAcre: 600 },
+      { name: "Cleaning", icon: () => null, pricePerAcre: 500 },
+    ],
   },
   {
-    name: "Compact CX35",
-    image: tractor2,
-    hp: 35,
+    name: "Mahindra 575 DI",
+    image: tractorMahindra,
+    hp: 45,
     fuel: "Diesel",
-    type: "Utility",
-    pricePerDay: 120,
+    type: "कृषि · Farming",
+    pricePerDay: 1400,
     available: true,
+    services: [
+      { name: "Ploughing", icon: () => null, pricePerAcre: 750 },
+      { name: "Harvesting", icon: () => null, pricePerAcre: 1200 },
+      { name: "Spraying", icon: () => null, pricePerAcre: 400 },
+      { name: "Cleaning", icon: () => null, pricePerAcre: 500 },
+    ],
   },
   {
-    name: "BlueHarvest T7060",
-    image: tractor3,
-    hp: 180,
+    name: "John Deere 5310",
+    image: tractorJohnDeere,
+    hp: 55,
     fuel: "Diesel",
-    type: "General Purpose",
-    pricePerDay: 260,
-    available: false,
+    type: "बहुउद्देशीय · Multi-use",
+    pricePerDay: 1800,
+    available: true,
+    services: [
+      { name: "Ploughing", icon: () => null, pricePerAcre: 900 },
+      { name: "Harvesting", icon: () => null, pricePerAcre: 1300 },
+      { name: "Seeding", icon: () => null, pricePerAcre: 650 },
+      { name: "Spraying", icon: () => null, pricePerAcre: 450 },
+      { name: "Cleaning", icon: () => null, pricePerAcre: 550 },
+    ],
+  },
+  {
+    name: "Farmtrac 60 EPI",
+    image: tractorFarmtrac,
+    hp: 60,
+    fuel: "Diesel",
+    type: "भारी काम · Heavy Duty",
+    pricePerDay: 2000,
+    available: true,
+    services: [
+      { name: "Ploughing", icon: () => null, pricePerAcre: 850 },
+      { name: "Harvesting", icon: () => null, pricePerAcre: 1250 },
+      { name: "Cleaning", icon: () => null, pricePerAcre: 500 },
+    ],
+  },
+  {
+    name: "Massey Ferguson 241",
+    image: tractorMassey,
+    hp: 42,
+    fuel: "Diesel",
+    type: "कृषि · Farming",
+    pricePerDay: 1300,
+    available: true,
+    services: [
+      { name: "Ploughing", icon: () => null, pricePerAcre: 700 },
+      { name: "Seeding", icon: () => null, pricePerAcre: 550 },
+      { name: "Spraying", icon: () => null, pricePerAcre: 380 },
+      { name: "Cleaning", icon: () => null, pricePerAcre: 450 },
+    ],
   },
 ];
 
@@ -48,9 +99,9 @@ const Index = () => {
       <section id="fleet" className="py-24">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Our Fleet</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">हमारे ट्रैक्टर · Our Fleet</h2>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Top-maintained tractors for every farming need. Pick the right machine and book instantly.
+              भारत के भरोसेमंद ब्रांड — Swaraj, Mahindra, John Deere, Farmtrac, Massey Ferguson। सस्ते किराये पर बुक करें।
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -60,6 +111,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <ServicesSection />
 
       <div id="how">
         <HowItWorks />

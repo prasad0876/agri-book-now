@@ -1,10 +1,10 @@
 import { Tractor, Users, MapPin, Star } from "lucide-react";
 
 const stats = [
-  { icon: Tractor, value: "150+", label: "Tractors Available" },
-  { icon: Users, value: "2,400+", label: "Happy Farmers" },
-  { icon: MapPin, value: "35", label: "Service Areas" },
-  { icon: Star, value: "4.9", label: "Average Rating" },
+  { icon: Tractor, value: "200+", label: "ट्रैक्टर उपलब्ध · Tractors" },
+  { icon: Users, value: "5,000+", label: "खुश किसान · Happy Farmers" },
+  { icon: MapPin, value: "120+", label: "गाँव · Villages Served" },
+  { icon: Star, value: "4.8", label: "रेटिंग · Rating" },
 ];
 
 const Stats = () => {
