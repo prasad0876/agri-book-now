@@ -8,20 +8,20 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+    <section className="relative min-h-[85vh] overflow-hidden flex-row flex items-center justify-start">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }} />
       <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
-      <div className="container relative z-10 py-20 my-[6px] border-2 border-solid">
+      <div className="container relative z-10 py-20 my-[6px] border-2 border-solid shadow-none rounded-full">
         <div className="max-w-2xl animate-fade-in-up">
           <span className="inline-flex items-center gap-2 rounded-full bg-secondary/20 px-4 py-1.5 text-sm font-medium text-primary-foreground backdrop-blur-sm mb-6">
             <Calendar className="h-4 w-4" />
             రైతులకు స్మార్ట్ బుకింగ్ · Smart Booking for Farmers
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-[sidebar-accent-foreground] text-[#f4dd10] bg-gray-950 ml-[78px]">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-[sidebar-accent-foreground] text-[#f4dd10] ml-[78px] text-left bg-[#49c4d4] mx-[72px]">
             ట్రాక్టర్ బుక్ చేయండి,{" "}
             <span className="text-[#f4680b]">వ్యవసాయం పెంచండి</span>
           </h1>
-          <p className="text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-lg leading-relaxed">
+          <p className="text-lg md:text-xl mb-10 max-w-lg leading-relaxed text-[#fa054f] bg-[#c2eaa9]">
             Swaraj, Mahindra, John Deere, Farmtrac, Massey Ferguson — అన్ని బ్రాండ్ ట్రాక్టర్లు అద్దెకు. దుక్కి, విత్తనం, కోత అన్నీ తక్కువ ధరలో.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
