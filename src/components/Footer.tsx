@@ -8,7 +8,7 @@ const Footer = () => {
           <Tractor className="h-5 w-5 text-secondary" />
           <span className="font-bold font-display">AgriBook</span>
         </div>
-        <p className="text-sm text-center">© 2026 AgriBook — किसानों के लिए स्मार्ट ट्रैक्टर बुकिंग। सर्वाधिकार सुरक्षित।</p>
+        <p className="text-sm text-center">© 2026 AgriBook — రైతుల కోసం స్మార్ట్ ట్రాక్టర్ బుకింగ్. అన్ని హక్కులు రిజర్వ్ చేయబడ్డాయి.</p>
       </div>
     </footer>
   );
