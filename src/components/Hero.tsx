@@ -17,14 +17,14 @@ const Hero = () => {
             <Calendar className="h-4 w-4" />
             రైతులకు స్మార్ట్ బుకింగ్ · Smart Booking for Farmers
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-[sidebar-accent-foreground] text-[#f4dd10] ml-[78px] text-left bg-[#49c4d4] mx-[72px]">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 bg-[sidebar-accent-foreground] text-[#f4dd10] ml-[78px] text-left mx-[72px] bg-[#49c4d4]/0">
             ట్రాక్టర్ బుక్ చేయండి,{" "}
             <span className="text-[#f4680b]">వ్యవసాయం పెంచండి</span>
           </h1>
-          <p className="text-lg md:text-xl mb-10 max-w-lg leading-relaxed text-[#fa054f] bg-[#c2eaa9]">
-            Swaraj, Mahindra, John Deere, Farmtrac, Massey Ferguson — అన్ని బ్రాండ్ ట్రాక్టర్లు అద్దెకు. దుక్కి, విత్తనం, కోత అన్నీ తక్కువ ధరలో.
+          <p className="text-lg md:text-xl mb-10 max-w-lg leading-relaxed text-[#fa054f] bg-[#aceaa9]/0">
+            ​
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex-col sm:flex-row gap-[11px] px-[29px] pr-[145px] flex items-start justify-start">
             <Button size="lg" onClick={scrollToFleet} className="text-lg px-8 py-6 bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full">
               ట్రాక్టర్లు చూడండి · Browse
               <ChevronRight className="ml-2 h-5 w-5" />
