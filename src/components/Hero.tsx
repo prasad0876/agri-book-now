@@ -11,7 +11,7 @@ const Hero = () => {
     <section className="relative min-h-[85vh] overflow-hidden flex-row flex items-center justify-start">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImage})` }} />
       <div className="absolute inset-0" style={{ background: "var(--hero-overlay)" }} />
-      <div className="container relative z-10 py-20 my-[6px] border-2 border-solid shadow-none rounded-full">
+      <div className="container relative z-10 py-20 my-[6px] shadow-none rounded-none border-none border-0">
         <div className="max-w-2xl animate-fade-in-up">
           <span className="inline-flex items-center gap-2 rounded-full bg-secondary/20 px-4 py-1.5 text-sm font-medium text-primary-foreground backdrop-blur-sm mb-6">
             <Calendar className="h-4 w-4" />
