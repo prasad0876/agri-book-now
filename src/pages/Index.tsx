@@ -1,9 +1,4 @@
 import { useState } from "react";
-const tractorSwaraj = "/lovable-uploads/0049daa3-43da-4a14-a561-c25052d6c820.jpg";
-const tractorMahindra = "/lovable-uploads/e47a3d32-06be-4412-a470-c2ab5a6698bf.jpg";
-const tractorJohnDeere = "/lovable-uploads/1e0e9737-f582-461a-985e-01057250ac9a.jpg";
-const tractorFarmtrac = "/lovable-uploads/e86af373-69e5-4b6a-bb69-366fcf01ce7f.jpg";
-const tractorMassey = "/lovable-uploads/a97c57c3-dfce-4177-b41e-c185b7b1eb89.jpg";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TractorCard from "@/components/TractorCard";
@@ -11,8 +6,16 @@ import type { TractorData } from "@/components/TractorCard";
 import ServicesSection from "@/components/ServicesSection";
 import HowItWorks from "@/components/HowItWorks";
 import Stats from "@/components/Stats";
+import BookingsDisplay from "@/components/BookingsDisplay";
+import GPSTracker from "@/components/GPSTracker";
 import Footer from "@/components/Footer";
 import LoginDialog from "@/components/LoginDialog";
+
+const tractorSwaraj = "/lovable-uploads/0049daa3-43da-4a14-a561-c25052d6c820.jpg";
+const tractorMahindra = "/lovable-uploads/e47a3d32-06be-4412-a470-c2ab5a6698bf.jpg";
+const tractorJohnDeere = "/lovable-uploads/1e0e9737-f582-461a-985e-01057250ac9a.jpg";
+const tractorFarmtrac = "/lovable-uploads/e86af373-69e5-4b6a-bb69-366fcf01ce7f.jpg";
+const tractorMassey = "/lovable-uploads/a97c57c3-dfce-4177-b41e-c185b7b1eb89.jpg";
 
 const tractors: TractorData[] = [
   {
@@ -131,7 +134,11 @@ const Index = () => {
         </div>
       </section>
 
+      <BookingsDisplay />
+
       <ServicesSection />
+
+      <GPSTracker />
 
       <div id="how">
         <HowItWorks />

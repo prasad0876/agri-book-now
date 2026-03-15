@@ -14,7 +14,98 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          acres: number
+          created_at: string
+          end_date: string
+          farmer_email: string | null
+          farmer_name: string
+          farmer_phone: string
+          field_lat: number
+          field_lng: number
+          id: string
+          services: string[]
+          start_date: string
+          status: string
+          total_cost: number
+          tractor_name: string
+          updated_at: string
+          village: string
+        }
+        Insert: {
+          acres?: number
+          created_at?: string
+          end_date: string
+          farmer_email?: string | null
+          farmer_name: string
+          farmer_phone: string
+          field_lat?: number
+          field_lng?: number
+          id?: string
+          services?: string[]
+          start_date: string
+          status?: string
+          total_cost: number
+          tractor_name: string
+          updated_at?: string
+          village: string
+        }
+        Update: {
+          acres?: number
+          created_at?: string
+          end_date?: string
+          farmer_email?: string | null
+          farmer_name?: string
+          farmer_phone?: string
+          field_lat?: number
+          field_lng?: number
+          id?: string
+          services?: string[]
+          start_date?: string
+          status?: string
+          total_cost?: number
+          tractor_name?: string
+          updated_at?: string
+          village?: string
+        }
+        Relationships: []
+      }
+      driver_locations: {
+        Row: {
+          booking_id: string | null
+          driver_name: string
+          id: string
+          lat: number
+          lng: number
+          updated_at: string
+        }
+        Insert: {
+          booking_id?: string | null
+          driver_name: string
+          id?: string
+          lat: number
+          lng: number
+          updated_at?: string
+        }
+        Update: {
+          booking_id?: string | null
+          driver_name?: string
+          id?: string
+          lat?: number
+          lng?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "driver_locations_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

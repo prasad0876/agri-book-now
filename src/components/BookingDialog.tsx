@@ -9,6 +9,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import FieldMap from "./FieldMap";
 import type { TractorService } from "./TractorCard";
 
@@ -32,6 +34,8 @@ const BookingDialog = ({ open, onOpenChange, tractorName, pricePerDay, services 
   const [village, setVillage] = useState("");
   const [fieldLocation, setFieldLocation] = useState<[number, number]>([15.5, 78.5]);
   const [submitted, setSubmitted] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const { toast } = useToast();
 
   const days = startDate && endDate
     ? Math.max(1, Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)))
@@ -48,9 +52,44 @@ const BookingDialog = ({ open, onOpenChange, tractorName, pricePerDay, services 
     setSelectedServices((prev) => prev.includes(sName) ? prev.filter((n) => n !== sName) : [...prev, sName]);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!startDate || !endDate) return;
+
+    setSaving(true);
+    try {
+      const { error } = await supabase.from("bookings").insert({
+        tractor_name: tractorName,
+        services: selectedServices,
+        acres: Number(acres),
+        start_date: format(startDate, "yyyy-MM-dd"),
+        end_date: format(endDate, "yyyy-MM-dd"),
+        total_cost: totalCost,
+        farmer_name: name,
+        farmer_phone: phone,
+        farmer_email: email || null,
+        village,
+        field_lat: fieldLocation[0],
+        field_lng: fieldLocation[1],
+      });
+
+      if (error) throw error;
+
+      setSubmitted(true);
+      toast({
+        title: "బుకింగ్ విజయవంతం! ✅",
+        description: `${tractorName} బుక్ అయింది. మేము మీకు కాల్ చేస్తాము.`,
+      });
+    } catch (err) {
+      console.error("Booking error:", err);
+      toast({
+        title: "బుకింగ్ విఫలమైంది",
+        description: "దయచేసి మళ్ళీ ప్రయత్నించండి · Please try again",
+        variant: "destructive",
+      });
+    } finally {
+      setSaving(false);
+    }
   };
 
   const handleClose = (val: boolean) => {
@@ -82,8 +121,16 @@ const BookingDialog = ({ open, onOpenChange, tractorName, pricePerDay, services 
               <strong>{tractorName}</strong> — {days} రోజులకు బుక్ అయింది.<br />
               గ్రామం: <strong>{village}</strong><br />
               మొత్తం ఖర్చు: <strong>₹{totalCost.toLocaleString("en-IN")}</strong><br />
-              మేము మీకు <strong>{phone}</strong> కు కాల్ చేస్తాము.
+              మేము మీకు <strong>{phone}</strong> కు SMS & WhatsApp పంపుతాము.
             </p>
+            <a
+              href={`https://www.google.com/maps?q=${fieldLocation[0]},${fieldLocation[1]}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline text-sm"
+            >
+              📍 పొలం లొకేషన్ మ్యాప్‌లో చూడండి →
+            </a>
             <Button onClick={() => handleClose(false)} className="mt-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
               సరే · Done
             </Button>
@@ -223,7 +270,9 @@ const BookingDialog = ({ open, onOpenChange, tractorName, pricePerDay, services 
               </div>
               <div className="flex gap-3">
                 <Button type="button" variant="outline" onClick={() => setStep(2)} className="flex-1 rounded-full py-5">← వెనుకకు</Button>
-                <Button type="submit" disabled={!name || !phone || !village} className="flex-1 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 text-base">బుక్ చేయండి ✅</Button>
+                <Button type="submit" disabled={!name || !phone || !village || saving} className="flex-1 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 text-base">
+                  {saving ? "బుక్ అవుతోంది..." : "బుక్ చేయండి ✅"}
+                </Button>
               </div>
             </div>
           )}
